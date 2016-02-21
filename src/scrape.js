@@ -1,5 +1,3 @@
-import jsdom from 'jsdom'
-import yaml from 'js-yaml'
 import EventEmitter from 'events'
 import {createSchema} from 'json-gate'
 import schema from './schema'
@@ -9,7 +7,6 @@ import debug from 'debug'
 import path from 'path'
 import hash from 'md5'
 import x from 'x-ray'
-import noodle from 'noodle'
 import {Promise} from 'bluebird'
 import fs from 'fs'
 import {Writable} from 'stream'
@@ -97,35 +94,16 @@ class Scraper extends EventEmitter {
     this.pages.forEach((page, nr) => {
       page.document = documents[nr]
     })
-    console.log('joined documents')
+    debug('joined documents')
     return this.pages
   }
 
   fetchDocument(url) {
-    console.log('fetch document %s', url)
+    debug('fetch document %s', url)
     return fetch(url)
-      .then(this.toBlob.bind(this))
-        .then((buffer) => {
-          //return buffer.toString('base64')
-          return buffer.toString()
+        .then((res) => {
+          return res.text()
       })
-  }
-
-  toBlob(data) {
-    let buffer;
-    const ws = Writable();
-    ws._write = (chunk, enc, next) => {
-      buffer += chunk;
-      next();
-    };
-    return new Promise((resolve, reject) => {
-      //data.body.pipe(ws).on('end', () => resolve(buffer))
-      data.body.pipe(ws) //.on('end', () => resolve(buffer))
-      setTimeout(() => {
-        resolve(buffer)
-        // data.body.emit('end')
-      }, 1000)
-    });
   }
 
   joinInfo(details) {
