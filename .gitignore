@@ -1,0 +1,9 @@
+*.swp
+*.txt
+*.log
+.idea
+node_modules/
+.c9/
+lib/
+ATTIC
+cache

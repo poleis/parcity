@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "url": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "qry": {
+              "type": "string"
+            },
+            "fld_tk_categorie": {
+              "type": "string"
+            },
+            "srt": {
+              "type": "string"
+            },
+            "Type": {
+              "type": "string"
+            },
+            "no_cache": {
+              "type": "string"
+            },
+            "fld_prl_kamerstuk": {
+              "type": "string"
+            },
+            "dpp": {
+              "type": "number"
+            },
+            "clusterName": {
+              "type": "string"
+            },
+            "sta": {
+              "type": "number"
+            },
+            "did": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "scrape": {
+      "type": "object",
+      "properties": {
+      }
+    },
+    "urls": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": { "$ref": "#/definitions/url"}
+      }
+    }
+  }
+}

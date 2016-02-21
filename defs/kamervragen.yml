@@ -1,0 +1,44 @@
+# http://www.tweedekamer.nl/kamerstukken?qry=%2A&fld_tk_categorie=Kamerstukken&srt=date%3Adesc%3Adate&Type=Kamerstukken&nocache=&fld_prl_kamerstuk=Kamervragen&dpp=15&clusterName=Kamervragen
+# first define the urls and it's parameters
+# then use these named urls possibly with different parameters.
+---
+name: kamerstukken
+endpoints:
+  kamerstukken:
+    url: https://www.tweedekamer.nl/kamerstukken
+    parameters:
+      fld_tk_categorie: Kamerstukken
+      srt: "date:desc:date"
+      Type: Kamerstukken
+      no_cache: ''
+      fld_prl_kamerstuk: Kamervragen
+      dpp: 15
+      clusterName: Kamervragen
+      sta: 16
+  kamervragen:
+    url: http://www.tweedekamer.nl/kamerstukken/kamervragen/detail
+    parameters:
+      id: 2016D07697
+      did: 2016D07697
+scrape:
+  kamerstukken:
+    endpoint: kamerstukken
+    record:
+      'ul.search-result-list li':
+         -
+           title: 'h3 a'
+           url: 'h3 a@href'
+           submitter: '.submitter'
+           documentId: '.search-result-properties p.id'
+           date: '.search-result-properties p.date'
+           document_url: '.links a.download@href'
+           document_title: '.links a.download'
+  kamervragen:
+    endpoint: kamervragen
+    record:
+      title: '.paper-description .use-as-title'
+      original_title: '.paper-description .original-title'
+      kamerstuk: '.paper-description a@href'
+      header_title: '.paper-header h1'
+      list_titles: '.paper-header dl dt'
+      list_definitions: '.paper-header dl dd'

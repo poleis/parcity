@@ -1,0 +1,54 @@
+{
+  "name": "parcity",
+  "version": "0.1.0",
+  "description": "site scraper",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rhalff/parcity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rhalff/parcity/issues"
+  },
+  "homepage": "https://github.com/rhalff/parcity",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha --opts config/mocha.opts",
+    "watch": "npm -s test -- --watch",
+    "build": "babel src --out-dir lib",
+    "lint": "standard bin/* src/*.js",
+    "prepublish": "npm run build",
+    "format": "standard --format src/*.js"
+  },
+  "author": "Rob Halff",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.3.1",
+    "cheerio": "^0.20.0",
+    "debug": "^2.2.0",
+    "jsdom": "^8.0.4",
+    "json-gate": "^0.8.22",
+    "lodash": "^4.5.0",
+    "md5": "^2.0.0",
+    "node-fetch": "^1.3.3",
+    "noodle": "0.0.3",
+    "x-ray": "git+ssh://github.com/lapwinglabs/x-ray.git#bugfix/nested-crawling"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
+    "babel-eslint": "^5.0.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "chai": "^3.5.0",
+    "glob": "^7.0.0",
+    "js-yaml": "^3.5.3",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
+    "standard": "^6.0.7",
+    "standard-format": "^2.1.0"
+  }
+}
