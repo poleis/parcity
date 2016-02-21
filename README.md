@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rhalff/parcity.png)](https://travis-ci.org/rhalff/parcity)
+[![Build Status](https://travis-ci.org/poleis/parcity.png)](https://travis-ci.org/poleis/parcity)
 [![NPM](https://nodei.co/npm/parcity.png)](https://nodei.co/npm/parcity/)
 
 Parcity
